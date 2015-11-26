@@ -40,9 +40,9 @@ class AulaControle extends Controle {
                 'duracao' => $_POST['duracao']
             );
 
-            $processo = $this->Aula->adicionar($dados);
+            $aula = $this->Aula->adicionar($dados);
 
-            if ($processo) {
+            if ($aula) {
                 $this->visao->bind('success', true);
             } else {
                 $this->visao->bind('success', false);

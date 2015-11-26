@@ -4,6 +4,14 @@
         <a href="?index.php"><b>Aprenda</b>Já</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
+
+        <?php
+
+        $valid = isset($_GET['log'])?$_GET['log']:'';
+        if ($valid == '0') {
+          echo '<div class="alert alert-danger"><strong>Login ou senha incorretos!</strong> <br>Tente novamente.</div>';
+        }
+        ?>
         <p class="login-box-msg">Fazer login para prosseguir para o AprendaJá</p>
         <form action="" method="post">
           <div class="form-group has-feedback">
@@ -11,7 +19,7 @@
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Senha" name='senha' required>
+            <input type="password" class="form-control" placeholder="Senha" name='senhalogin' required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row"><!-- /.col -->

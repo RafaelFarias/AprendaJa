@@ -149,10 +149,8 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group col-sm-12">
-                                                <input type="submit" class="btn btn-block btn-primary" id="dtAula"
-                                                       value="Salvar">
-                                                <input type="button" class="btn btn-block btn-danger" id="dtAula"
-                                                       value="Cancelar">
+                                                <input type="submit" class="btn btn-block btn-primary" value="Salvar">
+                                                <input type="button" class="btn btn-block btn-danger" value="Cancelar">
                                             </div>
                                         </div>
                                     </div>

@@ -33,6 +33,14 @@ class Usuario {
         return $db->query($sql);
     }
 
+    function logUsuario() {
+
+        $db = DB::criar('padrao');
+        $sql = 'INSERT INTO logs (login, data_hora) VALUES ' . '("' . $_SESSION['usuario']['ds_email'] . '", "'.date('d/m/Y h:i:s').'")';
+        var_dump($sql,$db->query($sql));exit;
+        return $db->query($sql);
+    }
+
     function autenticar($email, $senha) {
 
         $db = DB::criar('padrao');

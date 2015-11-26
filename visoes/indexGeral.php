@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="public/js/dist/css/AdminLTE.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="public/js/plugins/iCheck/square/blue.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
     <link rel="apple-touch-icon" sizes="57x57" href="public/img/favicon.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,7 +39,8 @@
 
 <!-- FastClick -->
 <script src="public/js/plugins/fastclick/fastclick.min.js"></script>
-
+<!-- CK Editor -->
+<script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
 <!-- jQuery 2.1.4 -->
 <script src="public/js/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
@@ -48,6 +55,10 @@
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
+
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('ds_descricao_aula');
     });
 </script>
 </html>

@@ -68,6 +68,7 @@
         <!-- Main content -->
         <section class="content">
             <?php
+
             $valid = isset($_GET['valid'])?$_GET['valid']:'';
             if ($valid == '0') {
                 echo '<div class="alert alert-danger"><strong>Erro de validação!</strong> Todos campos devem estar preechidos.</div>';

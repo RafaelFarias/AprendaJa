@@ -98,6 +98,7 @@ class Aula
         }
 
         $sql = 'UPDATE aulas SET ' . implode(', ', $camposNV) . ' where id_aula = ' . $id;
+//        var_dump($sql);exit;
         return $db->query($sql);
     }
 

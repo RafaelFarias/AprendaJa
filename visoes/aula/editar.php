@@ -68,6 +68,7 @@
         <!-- Main content -->
         <section class="content">
             <?php
+            
             $valid = isset($_GET['valid'])?$_GET['valid']:'';
             if ($valid == '0') {
                 echo '<div class="alert alert-danger"><strong>Erro de validação!</strong> Todos campos devem estar preechidos.</div>';
@@ -91,13 +92,13 @@
                                                         style="color: red">*</i></label>
                                                 <input type="text" class="form-control" id="nm_titulo_aula"
                                                        name="nm_titulo_aula" placeholder="Digite o título da aula"
-                                                       required>
+                                                       required value="<?= isset($aula['nm_titulo_aula'])?$aula['nm_titulo_aula']:'' ?>">
                                             </div>
                                             <div class="form-group col-sm-6">
                                                 <label for="dt_aula" class="control-label">Data da Aula: <i
                                                         style="color: red">*</i></label>
                                                 <input type="text" class="form-control maskData" id="dt_aula"
-                                                       name="dt_aula" placeholder="Digite o valor do desconto.">
+                                                       name="dt_aula" placeholder="Digite o valor do desconto." value="<?= isset($aula['dt_aula'])?$aula['dt_aula']:'' ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -112,20 +113,20 @@
                                                     <span class="input-group-addon">R$</span>
                                                     <input type="text" class="form-control maskDinheiro "
                                                            id="nr_valor_aula" name="nr_valor_aula"
-                                                           placeholder="Digite o valor do desconto.">
+                                                           placeholder="Digite o valor do desconto." value="<?= isset($aula['nr_valor_aula'])?$aula['nr_valor_aula']:'' ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label for="qt_vagas" class="control-label">Quantidade de Vagas: <i
                                                         style="color: red">*</i></label>
                                                 <input type="text" class="form-control" id="qt_vagas" name="qt_vagas"
-                                                       placeholder="Digite a descrição da aula" required/>
+                                                       placeholder="Digite a descrição da aula" required value="<?= isset($aula['qt_vagas'])?$aula['qt_vagas']:'' ?>"/>
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label for="duracao" class="control-label">Duração da Aula: <i
                                                         style="color: red">*</i></label>
                                                 <input type="text" class="form-control" id="duracao" name="duracao"
-                                                       placeholder="Digite a quantidade de dias que dura a aula" required/>
+                                                       placeholder="Digite a quantidade de dias que dura a aula" required value="<?= isset($aula['duracao'])?$aula['duracao']:'' ?>"/>
                                             </div>
                                         </div>
                                     </div>
@@ -135,9 +136,10 @@
                                             <div class="form-group col-sm-12">
                                                 <label for="ds_descricao_aula" class="control-label">Descrição da Aula: <i
                                                         style="color: red">*</i></label>
-                                                <textarea rows="10"  class="form-control" id="ds_descricao_aula"
+                                                <textarea rows="10"  class="form-control textaria" id="ds_descricao_aula"
+                                                          id="ds_descricao_aula"
                                                           name="ds_descricao_aula"
-                                                          placeholder="Digite a descrição da aula" required> </textarea>
+                                                          placeholder="Digite a descrição da aula" required><?= isset($aula['ds_descricao_aula'])?$aula['ds_descricao_aula']:'' ?></textarea>
                                             </div>
                                         </div>
                                     </div>

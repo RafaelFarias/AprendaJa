@@ -25,7 +25,7 @@ class LoginControle extends Controle {
             $usuario = $this->Usuario->autenticar($_POST['email'], $_POST['senha']);
 
             if ($usuario) {
-
+                $this->Usuario->logUsuario();
                 header("Location: ?c=dashboard");
                 $this->visao->bind('success', true);
             } else {

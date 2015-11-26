@@ -63,7 +63,7 @@ class AulaControle extends Controle {
 
         if ($_POST) {
 
-            $processo = $this->Processo->atualizar($_POST, $_GET['id']);
+            $processo = $this->Aula->atualizar($_POST, $_GET['id']);
 
             if ($processo) {
                 $this->visao->bind('success', true);
@@ -71,9 +71,10 @@ class AulaControle extends Controle {
                 $this->visao->bind('success', false);
             }
 
-            header("Location: ?c=processo");
+            header("Location: ?c=dashboard");
         } else {
-            $aula = $this->Aula->pesquisar(array(`id_aula` => $_GET['id']));
+            $aula = $this->Aula->pesquisar(array('id_aula' => $_GET['id']));
+
             $this->visao->bind('aula', $aula);
 
             $this->visao->render('Aula/editar');
@@ -95,6 +96,20 @@ class AulaControle extends Controle {
         } else {
             $this->visao->bind('success', false);
         }
+    }
+
+    /**
+     * método que serve pra deletar o processo
+     */
+    public function visualizar() {
+
+        $this->modelo('Aula');
+
+        $aula = $this->Aula->pesquisar(array('id_aula' => $_GET['id']));
+
+        $this->visao->bind('aula', $aula);
+
+        $this->visao->render('Aula/visualizar');
     }
 
 }

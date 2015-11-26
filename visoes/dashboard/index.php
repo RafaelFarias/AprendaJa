@@ -69,6 +69,26 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
+        <div class="example-modal">
+            <div class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Modal Default</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>One fine body&hellip;</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div><!-- /.example-modal -->
+
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -135,10 +155,10 @@
                                             echo '<td>' .
                                                 '<a data-toggle="tooltip" data-placement="top" title="EDITAR" href="?c=aula&a=editar&id=' . $aula['id_aula'] . '"><span class="glyphicon glyphicon-edit"></span> Editar</a> ' .
                                                 '<a data-toggle="tooltip" data-placement="top" title="APAGAR"  href="?c=aula&a=deletar&id=' . $aula['id_aula'] . '"><span class="glyphicon glyphicon-trash" ></span> Apagar</a>' .
-                                                '<a data-toggle="tooltip" data-placement="top" title="VISUALIZAR"  href="#"><span class="fa fa-eye"></span> Visualizar</a>' .
+                                                '<a data-toggle="tooltip" data-placement="top" title="INFORMAÇÕES"  href="?c=aula&a=visualizar&id=' . $aula['id_aula'] . '"><span class="fa fa-info-circle" data-toggle="modal" data-target="#myModal"></span> Informações</a>' .
                                                 '<td>';
                                         } else {
-                                            echo '<td><a data-toggle="tooltip" data-placement="top" title="VISUALIZAR"  href="#"><span class="fa fa-eye"></span> Visualizar</a></td>';
+                                            echo '<td><a data-toggle="tooltip" data-placement="top" title="INFORMAÇÕES"  href="#"><span class="fa fa-info-circle"></span> Informações</a></td>';
                                         }
 
                                     }

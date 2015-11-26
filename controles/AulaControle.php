@@ -21,9 +21,9 @@ class AulaControle extends Controle {
     public function adicionar() {
 
         if ($_POST) {
-            $this->modelo('Processo');
+            $this->modelo('Aula');
 
-            $processo = $this->Processo->adicionar($_POST);
+            $processo = $this->Aula->adicionar($_POST);
 
             if ($processo) {
                 $this->visao->bind('success', true);
@@ -33,7 +33,7 @@ class AulaControle extends Controle {
 
             header("Location: ?c=processo");
         } else {
-            $this->visao->render('Processo/adicionar');
+            $this->visao->render('Aula/adicionar');
         }
     }
 

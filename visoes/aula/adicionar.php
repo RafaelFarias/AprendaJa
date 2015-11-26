@@ -52,8 +52,8 @@
                         <i class="fa fa-home"></i> <span>Tela Inicial</span>
                     </a>
                 </li>
-                <li class="treeview">
-                    <a href="?c=aula&a=adicionar">
+                <li class="treeview active">
+                    <a href="?c=aula&a=adicionar ">
                         <i class="fa fa-book"></i> <span>Cadastro de Aulas</span>
                     </a>
                 </li>
@@ -71,63 +71,81 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Listas de Aulas</h3>
-
-                            <div class="box-tools">
-                                <div class="input-group" style="width: 150px;">
-                                    <input type="button" name="table_search" class="form-control input-sm pull-right"
-                                           placeholder="Search">
-
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+                            <h1 class="box-title" style="font-size: 30px;"><i class="fa fa-book"></i> Cadastro de Aulas
+                            </h1>
                         </div><!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <thead>
+                        <div class="box-body">
+                            <form action="" method="post">
+                                <fieldset>
+                                    <legend> Informações do Professor</legend>
 
-                                <tr>
-                                    <th>Assunto</th>
-                                    <th>Valor</th>
-                                    <th>Status</th>
-                                    <th>Vagas</th>
-                                </tr>
-                                </thead>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group col-sm-6">
+                                                <label for="nm_titulo_aula" class="control-label">Titulo da Aula: <i
+                                                        style="color: red">*</i></label>
+                                                <input type="text" class="form-control" id="nm_titulo_aula"
+                                                       name="nm_titulo_aula" placeholder="Digite o título da aula"
+                                                       required>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label for="ds_descricao_aula" class="control-label">Descrição da Aula: <i
+                                                        style="color: red">*</i></label>
+                                                <textarea class="form-control" id="ds_descricao_aula"
+                                                          name="ds_descricao_aula"
+                                                          placeholder="Digite a descrição da aula" required> </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <tbody>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group col-sm-6">
+                                                <label for="nr_valor_aula" class="control-label">Valor da Aula: <i
+                                                        style="color: red">*</i></label>
 
-                                <?php
-                                if ($listaAulas)
-                                    foreach ($listaAulas as $aula) {
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">R$</span>
+                                                    <input type="text" class="form-control maskDinheiro "
+                                                           id="nr_valor_aula" name="nr_valor_aula"
+                                                           placeholder="Digite o valor do desconto.">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label for="qt_vagas" class="control-label">Quantidade de Vagas: <i
+                                                        style="color: red">*</i></label>
+                                                <input type="text" class="form-control" id="qt_vagas" name="qtdVagas"
+                                                       placeholder="Digite a descrição da aula" required/>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                        switch ($aula['fl_status_aula']) {
-                                            case 'A':
-                                                $status = 'Aberta';
-                                                break;
-                                            case 'F':
-                                                $status = 'Fechada';
-                                                break;
-                                            case 'C':
-                                                $status = 'Concluída';
-                                                break;
-                                            case 'S':
-                                                $status = 'Suspensa';
-                                                break;
-                                        }
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group col-sm-6">
+                                                <label for="dt_aula" class="control-label">Data da Aula: <i
+                                                        style="color: red">*</i></label>
+                                                <input type="text" class="form-control maskData" id="dt_aula"
+                                                       name="dt_aula" placeholder="Digite o valor do desconto.">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Operação</legend>
 
-                                        echo '<tr>';
-                                        echo '<td>' . $aula['nm_titulo_aula'] . '</td>';
-                                        echo '<td>' . $aula['nr_valor_aula'] . '</td>';
-                                        echo '<td>' . $status . '</td>';
-                                        echo '<td>' . $aula['qt_vagas'] . '</td>';
-                                        echo '<td><a href="?c=aula&a=editar&id=' . $aula['id_aula'] . '"><span class="glyphicon glyphicon-edit"></span></a> <a href="?c=aula&a=cancelar&id=' . $aula['id_aula'] . '"><span class="glyphicon glyphicon-trash"></span></a><td>';
-                                    }
-                                ?>
-                                </tbody>
-
-                            </table>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group col-sm-12">
+                                                <input type="submit" class="btn btn-block btn-primary" id="dtAula"
+                                                       value="Salvar">
+                                                <input type="button" class="btn btn-block btn-danger" id="dtAula"
+                                                       value="Cancelar">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div>
@@ -324,17 +342,4 @@
          immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
 </div><!-- ./wrapper -->
-
-<!-- jQuery 2.1.4 -->
-<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- Bootstrap 3.3.5 -->
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
-<!-- Slimscroll -->
-<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../../plugins/fastclick/fastclick.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
 </body>

@@ -1,19 +1,22 @@
 <?php
 
-class Usuario {
+class Usuario
+{
 
     var $nome;
     var $email;
     var $senha;
 
-    function salvarUsuario($nome = null, $email = null, $senha = null) {
+    function salvarUsuario($nome = null, $email = null, $senha = null)
+    {
 
         $db = DB::criar('padrao');
         $sql = 'INSERT INTO usuario (nm_usuario, ds_email, nr_senha) VALUES ("' . $nome . '", "' . $email . '", "' . $senha . '")';
         return $db->query($sql);
     }
 
-    function adicionar($campos = array()) {
+    function adicionar($campos = array())
+    {
         if (count($campos) == 0) {
             return false;
         }
@@ -33,7 +36,16 @@ class Usuario {
         return $db->query($sql);
     }
 
-    function autenticar($email, $senha) {
+    function logUsuario()
+    {
+
+        $db = DB::criar('padrao');
+        $sql = 'INSERT INTO logs (login, data_hora) VALUES ' . '("' . $_SESSION['usuario']['ds_email'] . '", "' . date('d/m/Y h:i:s') . '")';
+        return $db->query($sql);
+    }
+
+    function autenticar($email, $senha)
+    {
 
         $db = DB::criar('padrao');
 
@@ -41,10 +53,9 @@ class Usuario {
         $sql = 'select * from usuario WHERE ds_email = "' . $email . '" AND nr_senha = "' . $senha . '"';
         $usuario = $db->query($sql);
 
+        $user = $usuario->fetch_all(MYSQLI_ASSOC);
 
-
-        if ($usuario) {
-            $user = $usuario->fetch_all(MYSQLI_ASSOC);
+        if ($user) {
             $usuario->free();
             $_SESSION["usuario"] = $user[0];
             return true;
@@ -52,12 +63,14 @@ class Usuario {
             return false;
         }
     }
-    
-    function deslogar() {
+
+    function deslogar()
+    {
         unset($_SESSION["usuario"]);
     }
 
-    public function atualizar($campos = array(), $id) {
+    public function atualizar($campos = array(), $id)
+    {
         if (count($campos) == 0) {
             return false;
         }
@@ -77,7 +90,8 @@ class Usuario {
         return $db->query($sql);
     }
 
-    public function deletar($id) {
+    public function deletar($id)
+    {
         if (!$id) {
             return false;
         }
@@ -87,7 +101,8 @@ class Usuario {
         return $db->query($sql);
     }
 
-    public function listar($pesquisa = array()) {
+    public function listar($pesquisa = array())
+    {
         # cria uma conexão usando a configuração
         # "padrao" da classe Config em config.php
         $db = DB::criar('padrao');
@@ -118,80 +133,99 @@ class Usuario {
         }
     }
 
-    public function pesquisar($pesquisa) {
+    public function pesquisar($pesquisa)
+    {
         $item = self::listar($pesquisa);
         return $item[0];
     }
 
-    function getNome() {
+    function getNome()
+    {
         return $this->nome;
     }
 
-    function getCpf() {
+    function getCpf()
+    {
         return $this->cpf;
     }
 
-    function getSexo() {
+    function getSexo()
+    {
         return $this->sexo;
     }
 
-    function getData_nascimento() {
+    function getData_nascimento()
+    {
         return $this->data_nascimento;
     }
 
-    function getEndereco() {
+    function getEndereco()
+    {
         return $this->endereco;
     }
 
-    function getEmail() {
+    function getEmail()
+    {
         return $this->email;
     }
 
-    function getTelefone() {
+    function getTelefone()
+    {
         return $this->telefone;
     }
 
-    function getFormacao_academica() {
+    function getFormacao_academica()
+    {
         return $this->formacao_academica;
     }
 
-    function getExperiencia() {
+    function getExperiencia()
+    {
         return $this->experiencia;
     }
 
-    function setNome($nome) {
+    function setNome($nome)
+    {
         $this->nome = $nome;
     }
 
-    function setCpf($cpf) {
+    function setCpf($cpf)
+    {
         $this->cpf = $cpf;
     }
 
-    function setSexo($sexo) {
+    function setSexo($sexo)
+    {
         $this->sexo = $sexo;
     }
 
-    function setData_nascimento($data_nascimento) {
+    function setData_nascimento($data_nascimento)
+    {
         $this->data_nascimento = $data_nascimento;
     }
 
-    function setEndereco($endereco) {
+    function setEndereco($endereco)
+    {
         $this->endereco = $endereco;
     }
 
-    function setEmail($email) {
+    function setEmail($email)
+    {
         $this->email = $email;
     }
 
-    function setTelefone($telefone) {
+    function setTelefone($telefone)
+    {
         $this->telefone = $telefone;
     }
 
-    function setFormacao_academica($formacao_academica) {
+    function setFormacao_academica($formacao_academica)
+    {
         $this->formacao_academica = $formacao_academica;
     }
 
-    function setExperiencia($experiencia) {
+    function setExperiencia($experiencia)
+    {
         $this->experiencia = $experiencia;
     }
 

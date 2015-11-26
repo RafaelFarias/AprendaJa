@@ -19,7 +19,7 @@ class Config {
             'servidor' => 'localhost',
             'usuario' => 'root',
             'driver' => 'mysqli',
-            'senha' => 'unipe',
+            'senha' => '',
             'porta' => '',
             'banco' => 'aprendaja',
             'charset' => 'utf8'

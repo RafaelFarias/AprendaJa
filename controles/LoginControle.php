@@ -22,18 +22,21 @@ class LoginControle extends Controle {
 
             $this->modelo('Usuario');
 
-            $usuario = $this->Usuario->autenticar($_POST['email'], $_POST['senha']);
+            $usuario = $this->Usuario->autenticar($_POST['email'], $_POST['senhalogin']);
 
             if ($usuario) {
-
+                $this->Usuario->logUsuario();
                 header("Location: ?c=dashboard");
                 $this->visao->bind('success', true);
             } else {
-                $this->visao->bind('success', false);
+                header("Location: ?c=login&log=0");
             }
-        }
+        } else {
 
         $this->visao->render('Login/index');
+
+        }
+
     }
 
     /**

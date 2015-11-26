@@ -21,9 +21,26 @@ class AulaControle extends Controle {
     public function adicionar() {
 
         if ($_POST) {
+
+            if (!Helper::valid($_POST)) {
+                header("Location: ?c=aula&a=adicionar&valid=0");
+                exit;
+            }
+
             $this->modelo('Aula');
 
-            $processo = $this->Aula->adicionar($_POST);
+            $dados = array(
+                'nm_titulo_aula' => $_POST['nm_titulo_aula'],
+                'ds_descricao_aula' => $_POST['ds_descricao_aula'],
+                'fl_status_aula' => 'A',
+                'nr_valor_aula' => $_POST['nr_valor_aula'],
+                'qt_vagas' => $_POST['qt_vagas'],
+                'dt_aula' => $_POST['dt_aula'],
+                'id_professor' => $_SESSION['usuario']['id_usuario'],
+                'duracao' => $_POST['duracao']
+            );
+
+            $processo = $this->Aula->adicionar($dados);
 
             if ($processo) {
                 $this->visao->bind('success', true);
@@ -31,7 +48,7 @@ class AulaControle extends Controle {
                 $this->visao->bind('success', false);
             }
 
-            header("Location: ?c=processo");
+            header("Location: ?c=dashboard");
         } else {
             $this->visao->render('Aula/adicionar');
         }
@@ -42,7 +59,7 @@ class AulaControle extends Controle {
      */
     public function editar() {
 
-        $this->modelo('Processo');
+        $this->modelo('Aula');
 
         if ($_POST) {
 
@@ -56,10 +73,10 @@ class AulaControle extends Controle {
 
             header("Location: ?c=processo");
         } else {
-            $processo = $this->Processo->pesquisar(array(`id_processo` => $_GET['id']));
-            $this->visao->bind('processo', $processo);
+            $aula = $this->Aula->pesquisar(array(`id_aula` => $_GET['id']));
+            $this->visao->bind('aula', $aula);
 
-            $this->visao->render('Processo/editar');
+            $this->visao->render('Aula/editar');
         }
     }
 
@@ -68,11 +85,12 @@ class AulaControle extends Controle {
      */
     public function deletar() {
 
-        $this->modelo('Processo');
-        $processo = $this->Processo->deletar($_GET['id']);
+        $this->modelo('Aula');
+
+        $processo = $this->Aula->deletar($_GET['id']);
 
         if ($processo) {
-            header("Location: ?c=processo");
+            header("Location: ?c=dashboard");
             $this->visao->bind('success', true);
         } else {
             $this->visao->bind('success', false);

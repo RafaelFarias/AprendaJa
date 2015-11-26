@@ -5,6 +5,7 @@ require_once 'biblioteca/visao.php';
 require_once 'biblioteca/controle.php';
 require_once 'biblioteca/config.php';
 require_once 'biblioteca/banco.php';
+require_once 'biblioteca/helper.php';
 
 $controle = Request::get('c');
 $acao = Request::get('a');

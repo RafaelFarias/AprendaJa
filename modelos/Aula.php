@@ -68,14 +68,15 @@ class Aula
 
         foreach ($campos as $nome => $valor) {
 
-            if ($_POST[$nome] != '') {
+            if ($campos[$nome] != '') {
                 $camposN[] = $nome;
-                $numberOrString = is_numeric($_POST[$nome]) ? $_POST[$nome] : '"' . $_POST[$nome] . '"';
+                $numberOrString = is_numeric($campos[$nome]) ? $campos[$nome] : '"' . $campos[$nome] . '"';
                 $camposV[] = $numberOrString;
             }
         }
 
         $sql = 'INSERT INTO aulas(' . implode(', ', $camposN) . ') VALUES ' . '(' . implode(', ', $camposV) . ')';
+
         return $db->query($sql);
     }
 
